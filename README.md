@@ -252,7 +252,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Developer
 
-**Akash Gupta**
+**Akhil Kumar Gupta**
 - GitHub: [@akgupta1337](https://github.com/akgupta1337)
 - Repository: [CustomDashboard](https://github.com/akgupta1337/CustomDashboard)
 
