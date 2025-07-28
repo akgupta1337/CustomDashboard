@@ -70,6 +70,26 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null
 }
 
+const CustomPieTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload
+    return (
+      <div className="custom-tooltip">
+        <p className="tooltip-label">{data.source || data.name}</p>
+        <p className="tooltip-entry" style={{ color: payload[0].color }}>
+          {`${payload[0].value}%`}
+        </p>
+        {data.trend && (
+          <p className="tooltip-trend" style={{ color: data.trend >= 0 ? '#4ade80' : '#f5576c' }}>
+            {`Trend: ${data.trend >= 0 ? '+' : ''}${data.trend.toFixed(1)}%`}
+          </p>
+        )}
+      </div>
+    )
+  }
+  return null
+}
+
 const LoadingSpinner = () => (
   <div className="chart-loading">
     <div className="spinner"></div>
@@ -179,29 +199,44 @@ export const PieChartComponent: React.FC<PieChartProps> = ({
   outerRadius = 120,
   className = ''
 }) => {
+  // Responsive sizing
+  const getResponsiveSize = () => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width <= 480) {
+        return { inner: 40, outer: 90, height: 280 };
+      } else if (width <= 768) {
+        return { inner: 50, outer: 110, height: 320 };
+      }
+    }
+    return { inner: innerRadius, outer: outerRadius + 30, height };
+  };
+
+  const { inner, outer, height: responsiveHeight } = getResponsiveSize();
+
   return (
     <Card className={`chart-container ${className}`}>
       <h3 className="chart-title">{title}</h3>
       {loading && <LoadingSpinner />}
       {error && <ErrorMessage message={error} />}
       {!loading && !error && (
-        <ResponsiveContainer width="100%" height={height}>
+        <ResponsiveContainer width="100%" height={responsiveHeight}>
           <PieChart>
             <Pie
               data={data}
               cx="50%"
               cy="50%"
-              innerRadius={innerRadius}
-              outerRadius={outerRadius}
-              paddingAngle={5}
+              innerRadius={inner}
+              outerRadius={outer}
+              paddingAngle={2}
               dataKey={dataKey}
+              nameKey="source"
             >
               {data.map((entry: any, index: number) => (
                 <Cell key={`cell-${index}`} fill={entry[colorKey]} />
               ))}
             </Pie>
-            <Tooltip content={<CustomTooltip />} />
-            <Legend />
+            <Tooltip content={<CustomPieTooltip />} />
           </PieChart>
         </ResponsiveContainer>
       )}

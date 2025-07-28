@@ -20,20 +20,38 @@ export default function Dashboard() {
   const apiService = MockApiService.getInstance()
   
   // State for all dynamic data
-  const [revenueData, setRevenueData] = useState<RevenueDataPoint[]>([])
-  const [conversionData, setConversionData] = useState<ConversionData[]>([])
-  const [performanceData, setPerformanceData] = useState<PerformanceData[]>([])
+  const [revenueData, setRevenueData] = useState<RevenueDataPoint[]>([
+    { month: 'Jan', revenue: 45000, users: 2400, timestamp: Date.now() },
+    { month: 'Feb', revenue: 52000, users: 2800, timestamp: Date.now() },
+    { month: 'Mar', revenue: 48000, users: 2600, timestamp: Date.now() },
+    { month: 'Apr', revenue: 61000, users: 3200, timestamp: Date.now() },
+    { month: 'May', revenue: 55000, users: 2900, timestamp: Date.now() },
+    { month: 'Jun', revenue: 67000, users: 3500, timestamp: Date.now() }
+  ])
+  const [conversionData, setConversionData] = useState<ConversionData[]>([
+    { source: 'Google Ads', value: 42, color: '#667eea', trend: 2.3 },
+    { source: 'Facebook Ads', value: 28, color: '#764ba2', trend: -1.2 },
+    { source: 'Email Marketing', value: 18, color: '#f093fb', trend: 4.1 },
+    { source: 'LinkedIn Ads', value: 8, color: '#f5576c', trend: 1.8 },
+    { source: 'Organic & Referrals', value: 4, color: '#4ade80', trend: 3.5 }
+  ])
+  const [performanceData, setPerformanceData] = useState<PerformanceData[]>([
+    { category: 'Mobile Campaigns', current: 78, previous: 65, target: 85 },
+    { category: 'Desktop Campaigns', current: 85, previous: 82, target: 90 },
+    { category: 'Tablet Campaigns', current: 72, previous: 70, target: 80 },
+    { category: 'Smart TV Ads', current: 45, previous: 38, target: 60 }
+  ])
   const [metrics, setMetrics] = useState<MetricData>({
-    revenue: 0,
-    users: 0,
-    conversions: 0,
-    growth: 0,
-    bounceRate: 0,
-    avgSessionDuration: 0
+    revenue: 847000,
+    users: 42800,
+    conversions: 3247,
+    growth: 12.5,
+    bounceRate: 35.2,
+    avgSessionDuration: 4.3
   })
   const [isRealTimeActive, setIsRealTimeActive] = useState(true)
   const [lastUpdate, setLastUpdate] = useState(new Date())
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false) // Set to false to show data immediately
   
   const [animatedValues, setAnimatedValues] = useState({
     revenue: 0,
