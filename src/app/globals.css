@@ -798,12 +798,11 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  margin-bottom: 2rem;
 }
 
-.chart-and-table {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.table-section {
+  margin-top: 2rem;
 }
 
 @media (max-width: 1024px) {
@@ -813,10 +812,6 @@ body {
 
   .bottom-charts {
     grid-template-columns: 1fr;
-  }
-
-  .chart-and-table {
-    flex-direction: column;
   }
 }
 

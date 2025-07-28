@@ -276,28 +276,30 @@ export default function Dashboard() {
           ]}
           gridColor={gridColor}
           axisColor={axisColor}
+          xAxisKey="category"
           loading={loading}
           height={300}
         />
 
-        <div className="chart-and-table">
-          <BarChartComponent
-            title="Monthly Revenue Distribution"
-            data={revenueData.slice(-6)}
-            bars={[
-              { dataKey: 'revenue', color: '#667eea', name: 'Revenue' }
-            ]}
-            gridColor={gridColor}
-            axisColor={axisColor}
-            loading={loading}
-            height={300}
-          />
-          
-          <MetricTable
-            data={tableData}
-            loading={loading}
-          />
-        </div>
+        <BarChartComponent
+          title="Monthly Revenue Distribution"
+          data={revenueData.slice(-6)}
+          bars={[
+            { dataKey: 'revenue', color: '#667eea', name: 'Revenue' }
+          ]}
+          gridColor={gridColor}
+          axisColor={axisColor}
+          xAxisKey="month"
+          loading={loading}
+          height={300}
+        />
+      </div>
+
+      <div className="table-section">
+        <MetricTable
+          data={tableData}
+          loading={loading}
+        />
       </div>
     </div>
   )

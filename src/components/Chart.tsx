@@ -44,6 +44,7 @@ export interface BarChartProps extends Omit<ChartProps, 'type'> {
   }[]
   gridColor?: string
   axisColor?: string
+  xAxisKey?: string
 }
 
 export interface PieChartProps extends Omit<ChartProps, 'type'> {
@@ -134,6 +135,7 @@ export const BarChartComponent: React.FC<BarChartProps> = ({
   error,
   gridColor = 'rgba(255,255,255,0.1)',
   axisColor = '#a0a0a0',
+  xAxisKey = 'category',
   className = ''
 }) => {
   return (
@@ -145,7 +147,7 @@ export const BarChartComponent: React.FC<BarChartProps> = ({
         <ResponsiveContainer width="100%" height={height}>
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
-            <XAxis dataKey="category" stroke={axisColor} />
+            <XAxis dataKey={xAxisKey} stroke={axisColor} />
             <YAxis stroke={axisColor} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
