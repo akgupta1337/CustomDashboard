@@ -63,14 +63,36 @@ body {
   flex-grow: 1;
 }
 
-.header h1 {
+.brand-logo {
+  margin-bottom: 1rem;
+}
+
+.brand-logo h1 {
   font-size: 3rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-tagline {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .brand-tagline {
+  color: #a0a0a0;
+}
+
+[data-theme="light"] .brand-tagline {
+  color: #64748b;
 }
 
 .header p {

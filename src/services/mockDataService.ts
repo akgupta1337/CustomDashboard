@@ -57,11 +57,11 @@ export const generateRevenueData = (): RevenueDataPoint[] => {
 // Generate realistic conversion data
 export const generateConversionData = (): ConversionData[] => {
   const sources = [
-    { name: 'Organic Search', baseValue: 45, color: '#667eea', volatility: 0.1 },
-    { name: 'Social Media', baseValue: 25, color: '#764ba2', volatility: 0.2 },
-    { name: 'Email Campaign', baseValue: 15, color: '#f093fb', volatility: 0.15 },
-    { name: 'Direct Traffic', baseValue: 10, color: '#f5576c', volatility: 0.05 },
-    { name: 'Referrals', baseValue: 5, color: '#4ade80', volatility: 0.3 }
+    { name: 'Google Ads', baseValue: 45, color: '#667eea', volatility: 0.1 },
+    { name: 'Facebook Ads', baseValue: 25, color: '#764ba2', volatility: 0.2 },
+    { name: 'Email Marketing', baseValue: 15, color: '#f093fb', volatility: 0.15 },
+    { name: 'LinkedIn Ads', baseValue: 10, color: '#f5576c', volatility: 0.05 },
+    { name: 'Organic & Referrals', baseValue: 5, color: '#4ade80', volatility: 0.3 }
   ]
   
   return sources.map(source => {
@@ -81,10 +81,10 @@ export const generateConversionData = (): ConversionData[] => {
 // Generate realistic performance data
 export const generatePerformanceData = (): PerformanceData[] => {
   const devices = [
-    { name: 'Mobile', basePerformance: 78, target: 85 },
-    { name: 'Desktop', basePerformance: 85, target: 90 },
-    { name: 'Tablet', basePerformance: 72, target: 80 },
-    { name: 'Smart TV', basePerformance: 45, target: 60 }
+    { name: 'Mobile Campaigns', basePerformance: 78, target: 85 },
+    { name: 'Desktop Campaigns', basePerformance: 85, target: 90 },
+    { name: 'Tablet Campaigns', basePerformance: 72, target: 80 },
+    { name: 'Smart TV Ads', basePerformance: 45, target: 60 }
   ]
   
   return devices.map(device => {

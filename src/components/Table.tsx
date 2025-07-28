@@ -210,5 +210,5 @@ export const MetricTable: React.FC<MetricTableProps> = ({ data, loading = false 
     }
   ]
 
-  return <Table title="Performance Metrics" columns={columns} data={data} loading={loading} />
+  return <Table title="Campaign Performance Metrics" columns={columns} data={data} loading={loading} />
 }

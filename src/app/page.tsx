@@ -185,8 +185,11 @@ export default function Dashboard() {
       <header className="header">
         <div className="header-content">
           <div className="header-text">
-            <h1>Analytics Dashboard</h1>
-            <p>Real-time insights and performance metrics</p>
+            <div className="brand-logo">
+              <h1>ADmyBRAND Insights</h1>
+              <div className="brand-tagline">Digital Marketing Analytics Platform</div>
+            </div>
+            <p>Real-time campaign performance and audience insights</p>
             <div className="real-time-status">
               <div className={`status-indicator ${isRealTimeActive ? 'active' : 'inactive'}`}>
                 <Activity size={16} />
@@ -210,12 +213,13 @@ export default function Dashboard() {
 
       <div className="metrics-grid">
         <MetricCard
-          title="Total Revenue"
+          title="Campaign Revenue"
           value={`$${animatedValues.revenue.toLocaleString()}`}
           change={15.2}
           icon={<DollarSign size={24} />}
           color="#667eea"
           isUpdating={isRealTimeActive}
+          subtitle="Total ad spend ROI"
         />
         <MetricCard
           title="Active Users"
@@ -224,32 +228,35 @@ export default function Dashboard() {
           icon={<Users size={24} />}
           color="#764ba2"
           isUpdating={isRealTimeActive}
+          subtitle="Unique website visitors"
         />
         <MetricCard
-          title="Conversions"
+          title="Lead Conversions"
           value={animatedValues.conversions.toLocaleString()}
           change={23.1}
           icon={<Target size={24} />}
           color="#f093fb"
           isUpdating={isRealTimeActive}
+          subtitle="Quality leads generated"
         />
         <MetricCard
-          title="Growth Rate"
+          title="Conversion Rate"
           value={`${animatedValues.growth.toFixed(1)}%`}
           change={4.3}
           icon={<TrendingUp size={24} />}
           color="#4ade80"
           isUpdating={isRealTimeActive}
+          subtitle="Visitor to lead ratio"
         />
       </div>
 
       <div className="charts-section">
         <LineChartComponent
-          title="Revenue & User Growth Trend"
+          title="Campaign Performance & Audience Growth"
           data={revenueData}
           lines={[
-            { dataKey: 'revenue', color: '#667eea', name: 'Revenue' },
-            { dataKey: 'users', color: '#f093fb', name: 'Users' }
+            { dataKey: 'revenue', color: '#667eea', name: 'Ad Revenue' },
+            { dataKey: 'users', color: '#f093fb', name: 'Website Visitors' }
           ]}
           gridColor={gridColor}
           axisColor={axisColor}
@@ -258,7 +265,7 @@ export default function Dashboard() {
         />
 
         <PieChartComponent
-          title="Traffic Sources"
+          title="Marketing Channel Performance"
           data={conversionData}
           dataKey="value"
           loading={loading}
@@ -268,11 +275,11 @@ export default function Dashboard() {
 
       <div className="bottom-charts">
         <BarChartComponent
-          title="Device Performance Comparison" 
+          title="Device & Platform Analytics" 
           data={performanceData}
           bars={[
-            { dataKey: 'current', color: '#667eea', name: 'Current' },
-            { dataKey: 'previous', color: '#764ba2', name: 'Previous' }
+            { dataKey: 'current', color: '#667eea', name: 'Current Period' },
+            { dataKey: 'previous', color: '#764ba2', name: 'Previous Period' }
           ]}
           gridColor={gridColor}
           axisColor={axisColor}
@@ -282,10 +289,10 @@ export default function Dashboard() {
         />
 
         <BarChartComponent
-          title="Monthly Revenue Distribution"
+          title="Monthly Campaign ROI Trends"
           data={revenueData.slice(-6)}
           bars={[
-            { dataKey: 'revenue', color: '#667eea', name: 'Revenue' }
+            { dataKey: 'revenue', color: '#667eea', name: 'Campaign Revenue' }
           ]}
           gridColor={gridColor}
           axisColor={axisColor}
